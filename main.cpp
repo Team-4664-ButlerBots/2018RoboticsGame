@@ -4,14 +4,12 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 
-short m_box_err(const char* message		 = "No message given...",
-			const char* content_title= "Error!",
-			const char* title		 = "Error!"){
-	switch(al_show_native_message_box(al_get_current_display(),
-									  title,
-									  content_title,
-									  message, NULL,
-									  ALLEGRO_MESSAGEBOX_ERROR)){
+short m_box_err(const char* message			= "No message given...",
+				const char* content_title	= "Error!",
+				const char* title			= "Error!"){
+	switch(al_show_native_message_box(al_get_current_display(), title,
+										content_title, message, NULL,
+										ALLEGRO_MESSAGEBOX_ERROR)){
 		case 0: return 0; // User closed the error screen lmao!
 		case 1: return 1; // ...ok? ...I guess? (user pressed the ok button)
 		case 2: return 2; // Pressing the imaginary no button lmfao
@@ -55,8 +53,8 @@ ALLEGRO_BITMAP *smart_img_loader(const char *img_to_load){
 	//pop up error box if unable to load the image, ask to proceed or quit.
 	if(!temp_img){
 		switch(m_box_err("There's a problem with loading an image!",
-						 "Would you like to continue? Exit the box to quit.",
-						 img_to_load)){
+				"Would you like to continue? Exit the box to quit.",
+				img_to_load)){
 			
 			//if they exited the box, quit program.
 			case 0: return NULL;
@@ -79,23 +77,23 @@ int main(int argc, char **argv){
 	//error checking and stuff pretty much.
 	if(!al_init()){
 		m_box_err("Error in allegro5/allegro.h!", "Allegro did not initialize!",
-				  "Critical Error!");
+				"Critical Error!");
 	}
 	
 	if(!al_init_image_addon()){
 		m_box_err("Error in allegro5/allegro_image.h!", "Allegro failed to make an image!",
-				  "Critical Error!");
+				"Critical Error!");
 	}
 	
 	if(!al_init_primitives_addon()){
 		m_box_err("Error in allegro5/allegro_primitives.h!", "Allegro failed to initialize the primitives addon!",
-				  "Critical Error!");
+				"Critical Error!");
 	}
 	
 	disp = al_create_display(640, 480);
 	if(!disp){
 		m_box_err("Error in display creation!", "Allegro failed to create a display!",
-				  "Critical Error!");
+				"Critical Error!");
 	}
 	
 	//create an event queue
