@@ -4,12 +4,12 @@
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_primitives.h>
 
-short m_box_err(const char* message			= "No message given...",
-				const char* content_title	= "Error!",
-				const char* title			= "Error!"){
+short m_box_err(const char* message		= "No message given...",
+		const char* content_title	= "Error!",
+		const char* title		= "Error!"){
 	switch(al_show_native_message_box(al_get_current_display(), title,
-										content_title, message, NULL,
-										ALLEGRO_MESSAGEBOX_ERROR)){
+				content_title, message, NULL,
+				ALLEGRO_MESSAGEBOX_ERROR)){
 		case 0: return 0; // User closed the error screen lmao!
 		case 1: return 1; // ...ok? ...I guess? (user pressed the ok button)
 		case 2: return 2; // Pressing the imaginary no button lmfao
