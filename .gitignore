@@ -1,0 +1,14 @@
+*.class
+*.log
+*.jar
+*.zip
+*.tar.gz
+*.rar
+*.classpath
+*.project
+
+
+/bin/
+/dist/
+/nbproject/
+/build/
